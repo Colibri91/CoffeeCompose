@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.dolar.mycoffee.common.AppConstant
 import com.dolar.mycoffee.ui.screen.productdetail.ProductDetailScreen
 import com.dolar.mycoffee.ui.screen.productlist.ProductListScreen
 import com.dolar.mycoffee.ui.screen.splash.SplashScreen
@@ -28,16 +29,15 @@ class MainActivity : ComponentActivity() {
 
             GlobalScope.launch(Dispatchers.Main) {
                 delay(2000)
-                navController.navigate("productlist")
+                navController.navigate(AppConstant.PRODUCT_LIST)
             }
 
             MyCoffeeTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    NavHost(navController = navController, startDestination = "splash") {
-                        composable("splash") { SplashScreen() }
-                        composable("productlist") { ProductListScreen(navController) }
-                        composable("productdetail/{drinkName}/",arguments = listOf(navArgument("drinkName") { type = NavType.StringType })) { backStackEntry ->
+                    NavHost(navController = navController, startDestination = AppConstant.SPLASH) {
+                        composable(AppConstant.SPLASH) { SplashScreen() }
+                        composable(AppConstant.PRODUCT_LIST) { ProductListScreen(navController) }
+                        composable(AppConstant.PRODUCT_DETAIL_WITH_ARGUMENTS ,arguments = listOf(navArgument("drinkName") { type = NavType.StringType })) { backStackEntry ->
                             ProductDetailScreen(backStackEntry.arguments?.getString("drinkName").toString(),navController)
                         }
                     }
