@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -23,6 +24,7 @@ import coil.compose.rememberImagePainter
 import com.dolar.mycoffee.entity.CoffeeResult
 import com.dolar.mycoffee.entity.coffeelist.CoffeeListResponse
 import com.dolar.mycoffee.entity.coffeelist.CoffeeListResponseItem
+import com.dolar.mycoffee.ui.GeneralProgressDialog
 import com.dolar.mycoffee.ui.theme.MyCoffeeTheme
 import org.koin.androidx.compose.getViewModel
 
@@ -37,9 +39,9 @@ fun ProductListScreen(navController: NavController) {
 
 @Composable
 fun ProductList(navController: NavController,productListViewModel: ProductListViewModel = getViewModel()) {
-
     val coffeeListState by productListViewModel.coffeListLiveData.collectAsState()
-
+    val showProgress by productListViewModel.eventShowOrHideProgress.observeAsState()
+    showProgress?.let { GeneralProgressDialog(it) }
     when(coffeeListState){
         is CoffeeResult.Success->{
             val coffeeList = (coffeeListState as CoffeeResult.Success<CoffeeListResponse?>).data!!.toList()
