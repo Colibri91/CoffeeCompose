@@ -12,5 +12,5 @@ A demo Coffee app using compose and Koin based on modern Android tech staks and 
 - Architecture
   - MVVM Architecture (Declarative View - ViewModel - Model)
   - Repository pattern
-- [Lottie](https://github.com/airbnb/lottie/blob/master/android-compose.md) for animations
+- [Lottie](https://github.com/airbnb/lottie/blob/master/android-compose.md) for animation
 - [Coil](https://coil-kt.github.io/coil/compose/) for image loading
