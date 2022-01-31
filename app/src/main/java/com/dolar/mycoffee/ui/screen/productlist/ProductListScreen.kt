@@ -32,7 +32,6 @@ import com.dolar.mycoffee.ui.theme.MyCoffeeTheme
 import com.dolar.mycoffee.ui.ui.theme.Coffee
 import com.dolar.mycoffee.ui.ui.theme.DarkCoffee
 import com.dolar.mycoffee.ui.ui.theme.MilkyCoffee
-import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.compose.getViewModel
 
 /**
