@@ -64,8 +64,8 @@ fun BottomNavigationBar(selectedItemRoute: (String) -> Unit) {
     }
 }
 
-
-@Composable
+//if you want to navigate from the bottom navigation you can use this function.
+/*@Composable
 fun NavigationGraph(navController: NavHostController) {
     NavHost(navController, startDestination = BottomNavItem.Hot.screen_route) {
         composable(BottomNavItem.Hot.screen_route) {
@@ -75,7 +75,7 @@ fun NavigationGraph(navController: NavHostController) {
             IcedScreen()
         }
     }
-}
+}*/
 
 @Composable
 fun HotScreen() {
