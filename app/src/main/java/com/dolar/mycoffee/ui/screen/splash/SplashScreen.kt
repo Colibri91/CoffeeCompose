@@ -43,7 +43,7 @@ fun SplashScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun SplashScreenPreview() {
+private fun SplashScreenPreview() {
     MyCoffeeTheme {
         SplashScreen()
     }

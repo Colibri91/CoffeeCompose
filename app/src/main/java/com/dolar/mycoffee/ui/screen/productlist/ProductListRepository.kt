@@ -19,7 +19,7 @@ class ProductListRepository(private val apiFactory: ApiFactory) {
 
     val coffeeListByTypeLiveData = flow<CoffeeResult<CoffeeListResponse?>> {
         val coffeeListResponse = withContext(Dispatchers.IO){
-            apiFactory.getCoffeeListByType(coffeType.value)
+            apiFactory.getCoffeeListByType(coffeType.type)
         }
         if(coffeeListResponse.isSuccessful){
             emit(CoffeeResult.Success(coffeeListResponse.body()))

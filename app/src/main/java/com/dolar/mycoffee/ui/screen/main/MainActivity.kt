@@ -1,4 +1,4 @@
-package com.dolar.mycoffee.ui.screen
+package com.dolar.mycoffee.ui.screen.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -25,24 +26,27 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            val navController = rememberNavController()
-
-            GlobalScope.launch(Dispatchers.Main) {
-                delay(2000)
-                navController.navigate(AppConstant.PRODUCT_LIST)
-            }
-
             MyCoffeeTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    NavHost(navController = navController, startDestination = AppConstant.SPLASH) {
-                        composable(AppConstant.SPLASH) { SplashScreen() }
-                        composable(AppConstant.PRODUCT_LIST) { ProductListScreen(navController) }
-                        composable(AppConstant.PRODUCT_DETAIL_WITH_ARGUMENTS ,arguments = listOf(navArgument("drinkName") { type = NavType.StringType })) { backStackEntry ->
-                            ProductDetailScreen(backStackEntry.arguments?.getString("drinkName").toString(),navController)
-                        }
-                    }
+                   MainScreen()
                 }
             }
+        }
+    }
+}
+
+@Composable
+private fun MainScreen(){
+    val navController = rememberNavController()
+    LaunchedEffect(Dispatchers.Main){
+        delay(2000)
+        navController.navigate(AppConstant.PRODUCT_LIST)
+    }
+    NavHost(navController = navController, startDestination = AppConstant.SPLASH) {
+        composable(AppConstant.SPLASH) { SplashScreen() }
+        composable(AppConstant.PRODUCT_LIST) { ProductListScreen(navController) }
+        composable(AppConstant.PRODUCT_DETAIL_WITH_ARGUMENTS ,arguments = listOf(navArgument("drinkName") { type = NavType.StringType })) { backStackEntry ->
+            ProductDetailScreen(backStackEntry.arguments?.getString("drinkName").toString(),navController)
         }
     }
 }

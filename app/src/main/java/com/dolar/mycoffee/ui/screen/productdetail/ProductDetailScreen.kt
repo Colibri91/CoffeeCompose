@@ -43,7 +43,7 @@ fun ProductDetailScreen(msg: String, navController: NavController) {
 
 @Preview(showBackground = true)
 @Composable
-fun ProductDetailScreenPreview() {
+private fun ProductDetailScreenPreview() {
     MyCoffeeTheme {
         ProductDetailScreen(msg = "Mert Dolar", rememberNavController())
     }

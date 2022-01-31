@@ -11,7 +11,7 @@ import retrofit2.http.*
 interface ApiFactory {
 
     @GET("coffee/{type}")
-    suspend fun getCoffeeListByType(@Path("type") type : String = CoffeeType.HOT.value) : Response<CoffeeListResponse?>
+    suspend fun getCoffeeListByType(@Path("type") type : String = CoffeeType.HOT.type) : Response<CoffeeListResponse?>
 
 
 }
