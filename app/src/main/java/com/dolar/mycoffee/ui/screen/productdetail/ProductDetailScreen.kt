@@ -1,6 +1,7 @@
 package com.dolar.mycoffee.ui.screen.productdetail
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -10,18 +11,17 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberImagePainter
 import com.dolar.mycoffee.ui.theme.MyCoffeeTheme
+import com.dolar.mycoffee.ui.ui.theme.MilkyCoffee
 
 /**
  * Created by R. Mert Dolar on 6.01.2022.
  */
 
 @Composable
-fun ProductDetailScreen(msg: String, navController: NavController) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+fun ProductDetailScreen(drinkName: String,description : String, ingredients : String) {
+    Column(Modifier.fillMaxSize().background(MilkyCoffee),horizontalAlignment = Alignment.CenterHorizontally) {
         Image(
             painter = rememberImagePainter("https://coffee.alexflipnote.dev/random"),
             contentDescription = "Contact profile picture",
@@ -32,9 +32,11 @@ fun ProductDetailScreen(msg: String, navController: NavController) {
         Spacer(modifier = Modifier.width(8.dp))
 
         Column {
-            Text(text = msg, fontSize = 44.sp, modifier = Modifier.padding(8.dp,0.dp))
+            Text(text = drinkName, fontSize = 44.sp, modifier = Modifier.padding(8.dp,0.dp))
             Spacer(modifier = Modifier.height(4.dp))
-            Text(modifier = Modifier.padding(8.dp,0.dp),text = "Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.")
+            Text(modifier = Modifier.padding(8.dp,0.dp),text = "Description : $description")
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(modifier = Modifier.padding(8.dp,0.dp),text = "Ingredients : $ingredients")
         }
 
         Spacer(modifier = Modifier.width(8.dp))
@@ -45,6 +47,6 @@ fun ProductDetailScreen(msg: String, navController: NavController) {
 @Composable
 private fun ProductDetailScreenPreview() {
     MyCoffeeTheme {
-        ProductDetailScreen(msg = "Mert Dolar", rememberNavController())
+        ProductDetailScreen(drinkName = "Coffee Name","Description","Ingredients")
     }
 }

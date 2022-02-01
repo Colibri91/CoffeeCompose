@@ -101,7 +101,7 @@ private fun ProductListItem(coffee: CoffeeListResponseItem, navController: NavCo
         Button(modifier = Modifier
             .padding(6.dp)
             .weight(1f),colors = ButtonDefaults.buttonColors(backgroundColor = Coffee)
-            , onClick = { navController.navigate("productdetail/${coffee.title}") }) {
+            , onClick = { navController.navigate("productdetail/${coffee.title}/${coffee.description}/${coffee.ingredients}") }) {
             Text(text = "Detail", color = DarkCoffee)
         }
     }

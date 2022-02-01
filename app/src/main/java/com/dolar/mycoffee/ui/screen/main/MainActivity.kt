@@ -45,8 +45,12 @@ private fun MainScreen(){
     NavHost(navController = navController, startDestination = AppConstant.SPLASH) {
         composable(AppConstant.SPLASH) { SplashScreen() }
         composable(AppConstant.PRODUCT_LIST) { ProductListScreen(navController) }
-        composable(AppConstant.PRODUCT_DETAIL_WITH_ARGUMENTS ,arguments = listOf(navArgument("drinkName") { type = NavType.StringType })) { backStackEntry ->
-            ProductDetailScreen(backStackEntry.arguments?.getString("drinkName").toString(),navController)
+        composable(AppConstant.PRODUCT_DETAIL_WITH_ARGUMENTS ,arguments = listOf(navArgument("drinkName") { type = NavType.StringType },
+            navArgument("description") { type = NavType.StringType },
+            navArgument("ingredients") { type = NavType.StringType })) { backStackEntry ->
+            ProductDetailScreen(backStackEntry.arguments?.getString("drinkName").toString(),
+                backStackEntry.arguments?.getString("description").toString(),
+                backStackEntry.arguments?.getString("ingredients").toString())
         }
     }
 }
