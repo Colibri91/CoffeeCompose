@@ -70,7 +70,7 @@ private fun ProductList(navController: NavController,productListViewModel: Produ
 
 @Composable
 private fun CoffeeList(coffeeList : List<CoffeeListResponseItem?>,navController: NavController){
-    LazyColumn(Modifier.background(MilkyCoffee)) {
+    LazyColumn(Modifier.background(MilkyCoffee).padding(0.dp,0.dp,0.dp,56.dp)) {
         items(coffeeList) { coffee ->
             coffee?.let { ProductListItem(coffee = it, navController = navController) }
         }
