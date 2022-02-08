@@ -33,13 +33,15 @@ import com.dolar.mycoffee.ui.ui.theme.Coffee
 sealed class BottomNavItem(var title:String, var icon:Int, var screen_route:String){
     object Hot : BottomNavItem("Hot", R.drawable.ic_hot_coffee,"hot")
     object Iced: BottomNavItem("Iced",R.drawable.ic_ice_coffee,"iced")
+    object Favorite: BottomNavItem("Favorite",R.drawable.ic_favorite,"fav")
 }
 
 @Composable
 fun BottomNavigationBar(selectedItemRoute: (String) -> Unit) {
     val items = listOf(
         BottomNavItem.Hot,
-        BottomNavItem.Iced
+        BottomNavItem.Iced,
+        BottomNavItem.Favorite
     )
     var selectedItem by remember { mutableStateOf("hot") }
 
@@ -74,6 +76,9 @@ fun NavigationGraph(navController: NavHostController) {
         composable(BottomNavItem.Iced.screen_route) {
             IcedScreen()
         }
+        composable(BottomNavItem.Iced.screen_route) {
+            FavoriteScreen()
+        }
     }
 }
 
@@ -98,6 +103,25 @@ fun HotScreen() {
 
 @Composable
 fun IcedScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(colorResource(id = R.color.teal_700))
+            .wrapContentSize(Alignment.Center)
+    ) {
+        Text(
+            text = "Iced",
+            fontWeight = FontWeight.Bold,
+            color = Color.White,
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            textAlign = TextAlign.Center,
+            fontSize = 20.sp
+        )
+    }
+}
+
+@Composable
+fun FavoriteScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
