@@ -25,7 +25,7 @@ import coil.compose.rememberImagePainter
 import com.dolar.mycoffee.common.enum.CoffeeType
 import com.dolar.mycoffee.entity.CoffeeResult
 import com.dolar.mycoffee.entity.coffeelist.CoffeeListResponse
-import com.dolar.mycoffee.entity.coffeelist.CoffeeListResponseItem
+import com.dolar.mycoffee.entity.coffeelist.Coffee
 import com.dolar.mycoffee.ui.GeneralProgressDialog
 import com.dolar.mycoffee.ui.screen.main.BottomNavigationBar
 import com.dolar.mycoffee.ui.theme.MyCoffeeTheme
@@ -69,7 +69,7 @@ private fun ProductList(navController: NavController,productListViewModel: Produ
 }
 
 @Composable
-private fun CoffeeList(coffeeList : List<CoffeeListResponseItem?>,navController: NavController){
+private fun CoffeeList(coffeeList : List<Coffee?>, navController: NavController){
     LazyColumn(Modifier.background(MilkyCoffee).padding(0.dp,0.dp,0.dp,56.dp)) {
         items(coffeeList) { coffee ->
             coffee?.let { ProductListItem(coffee = it, navController = navController) }
@@ -78,7 +78,7 @@ private fun CoffeeList(coffeeList : List<CoffeeListResponseItem?>,navController:
 }
 
 @Composable
-private fun ProductListItem(coffee: CoffeeListResponseItem, navController: NavController) {
+private fun ProductListItem(coffee: Coffee, navController: NavController) {
     Row(modifier = Modifier.padding(all = 8.dp)) {
         Image(
             painter = rememberImagePainter("https://coffee.alexflipnote.dev/random"),

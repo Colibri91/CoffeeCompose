@@ -1,6 +1,7 @@
 package com.dolar.mycoffee
 
 import android.app.Application
+import com.dolar.mycoffee.db.coffeeDB
 import com.dolar.mycoffee.network.networkModule
 import com.dolar.mycoffee.ui.screen.productlist.productListModule
 import org.koin.android.ext.koin.androidContext
@@ -14,7 +15,8 @@ class CoffeeApplication : Application() {
 
     private val moduleList: List<Module> = listOf(
         networkModule,
-        productListModule
+        productListModule,
+        coffeeDB
     )
 
     override fun onCreate() {
