@@ -52,7 +52,11 @@ private fun ProductList(navController: NavController,productListViewModel: Produ
     Scaffold(
         bottomBar = {
             BottomNavigationBar(selectedItemRoute = {
-                productListViewModel.getCoffeeList(CoffeeType.getValueByType(it))
+                if(it == "fav"){
+                    productListViewModel.getFavoriteCoffeeList()
+                }else{
+                    productListViewModel.getCoffeeList(CoffeeType.getValueByType(it))
+                }
             })
         }
     ) {
@@ -101,7 +105,7 @@ private fun ProductListItem(coffee: Coffee, navController: NavController) {
         Button(modifier = Modifier
             .padding(6.dp)
             .weight(1f),colors = ButtonDefaults.buttonColors(backgroundColor = Coffee)
-            , onClick = { navController.navigate("productdetail/${coffee.title}/${coffee.description}/${coffee.ingredients}") }) {
+            , onClick = { navController.navigate("productdetail/${coffee.title}/${coffee.description}/${coffee.ingredients}/${coffee.id}") }) {
             Text(text = "Detail", color = DarkCoffee)
         }
     }

@@ -8,5 +8,5 @@ import org.koin.dsl.module
  */
 val productListModule = module {
     viewModel { ProductListViewModel(get()) }
-    factory { ProductListRepository(get()) }
+    factory { ProductListRepository(get(),get()) }
 }

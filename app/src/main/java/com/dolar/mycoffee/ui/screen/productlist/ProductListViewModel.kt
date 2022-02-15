@@ -40,4 +40,14 @@ class ProductListViewModel(private val productListRepository: ProductListReposit
             }
         }
     }
+
+    fun getFavoriteCoffeeList(){
+        viewModelScope.launch{
+            showProgress()
+            productListRepository.favCoffeeListLiveData.collect {
+                _coffeeListLiveData.value = it
+                hideProgress()
+            }
+        }
+    }
 }

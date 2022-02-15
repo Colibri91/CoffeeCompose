@@ -47,10 +47,12 @@ private fun MainScreen(){
         composable(AppConstant.PRODUCT_LIST) { ProductListScreen(navController) }
         composable(AppConstant.PRODUCT_DETAIL_WITH_ARGUMENTS ,arguments = listOf(navArgument("drinkName") { type = NavType.StringType },
             navArgument("description") { type = NavType.StringType },
-            navArgument("ingredients") { type = NavType.StringType })) { backStackEntry ->
+            navArgument("ingredients") { type = NavType.StringType },
+            navArgument("id") { type = NavType.StringType })) { backStackEntry ->
             ProductDetailScreen(backStackEntry.arguments?.getString("drinkName").toString(),
                 backStackEntry.arguments?.getString("description").toString(),
-                backStackEntry.arguments?.getString("ingredients").toString())
+                backStackEntry.arguments?.getString("ingredients").toString(),
+                backStackEntry.arguments?.getString("id").toString())
         }
     }
 }
