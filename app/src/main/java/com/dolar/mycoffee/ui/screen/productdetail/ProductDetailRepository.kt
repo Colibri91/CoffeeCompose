@@ -9,8 +9,18 @@ import com.dolar.mycoffee.entity.coffeelist.CoffeeEntity
  */
 class ProductDetailRepository(private val coffeeDao: CoffeeDao) {
 
-    fun addCoffeeToFavoriteList(coffee : CoffeeEntity) {
+    suspend fun addCoffeeToFavoriteList(coffee : CoffeeEntity) {
         coffeeDao.addCoffeeToFavList(coffee)
     }
+
+    suspend fun isCoffeeAlreadyInFavorites(id : Int) : Boolean{
+        return coffeeDao.isCoffeeAlreadyInFavorites(id)
+    }
+
+    suspend fun removeCoffeeFromFavoritesById(id : Int) {
+        coffeeDao.deleteCoffeeFromFavoritesById(id)
+    }
+
+
 
 }

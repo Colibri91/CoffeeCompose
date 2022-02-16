@@ -48,7 +48,7 @@ fun ProductDetailScreen(drinkName: String, description: String, ingredients: Str
                     .align(Alignment.TopEnd)
                     .padding(8.dp)
                     .clickable {
-                        productDetailViewModel.addCoffeeToFavoriteList(CoffeeEntity(id.toInt(),drinkName,description,ingredients))
+                        productDetailViewModel.addOrRemoveFavoriteCoffee(CoffeeEntity(id.toInt(),drinkName,description,ingredients))
                     }, contentScale = ContentScale.Crop
             )
         }

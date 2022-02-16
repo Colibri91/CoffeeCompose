@@ -10,11 +10,17 @@ import com.dolar.mycoffee.entity.coffeelist.CoffeeEntity
 @Dao
 interface CoffeeDao {
     @Query("select * from coffeeTable")
-    fun getFavoriteCoffeeList(): List<CoffeeEntity>
+    suspend fun getFavoriteCoffeeList(): List<CoffeeEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addCoffeeToFavList(coffee: CoffeeEntity)
+    suspend fun addCoffeeToFavList(coffee: CoffeeEntity)
 
-    @Delete
-    fun deleteCoffeeFromFavList(deleteCoffee: CoffeeEntity)
+    @Query("select * from coffeeTable where id = :id")
+    suspend fun getFavoriteCoffeeById(id : Int): CoffeeEntity
+
+    @Query("select exists(select * from coffeeTable where id = :id)")
+    suspend fun isCoffeeAlreadyInFavorites(id : Int) : Boolean
+
+    @Query("delete from coffeeTable where id = :id")
+    suspend fun deleteCoffeeFromFavoritesById(id: Int)
 }
