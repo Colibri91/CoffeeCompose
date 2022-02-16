@@ -9,6 +9,7 @@ A demo Coffee app using compose and Koin based on modern Android tech staks and 
   - Compose - A modern toolkit for building native Android UI.
   - Lifecycle - dispose observing data when lifecycle state changes.
   - ViewModel - UI related data holder, lifecycle aware.
+  - Room - provides an abstraction layer over SQLite DB.
 - Architecture
   - MVVM Architecture (Declarative View - ViewModel - Model)
   - Repository pattern
