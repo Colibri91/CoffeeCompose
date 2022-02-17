@@ -6,6 +6,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -27,6 +29,8 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun ProductDetailScreen(drinkName: String, description: String, ingredients: String,id : String,productDetailViewModel: ProductDetailViewModel = getViewModel()) {
+    val favoriteResourceState by productDetailViewModel.favoriteImageResourceLiveData.collectAsState()
+    productDetailViewModel.setFavIconResource(id)
     Column(
         Modifier
             .fillMaxSize()
@@ -41,7 +45,7 @@ fun ProductDetailScreen(drinkName: String, description: String, ingredients: Str
                 modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.Crop
             )
             Image(
-                painter = painterResource(id = R.drawable.ic_favorite),
+                painter = painterResource(id = favoriteResourceState),
                 contentDescription = "Contact profile picture",
                 modifier = Modifier
                     .size(48.dp)
