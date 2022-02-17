@@ -1,6 +1,5 @@
 package com.dolar.mycoffee.db
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.dolar.mycoffee.entity.coffeelist.CoffeeEntity
 

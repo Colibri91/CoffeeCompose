@@ -55,7 +55,7 @@ private fun ProductList(navController: NavController,productListViewModel: Produ
                 if(it == "fav"){
                     productListViewModel.getFavoriteCoffeeList()
                 }else{
-                    productListViewModel.getCoffeeList(CoffeeType.getValueByType(it))
+                    productListViewModel.getCoffeeList(CoffeeType.getValueByType(it) )
                 }
             })
         }
